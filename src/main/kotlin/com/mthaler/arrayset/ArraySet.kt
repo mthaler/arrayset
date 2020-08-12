@@ -1,6 +1,6 @@
 package com.mthaler.arrayset
 
-abstract class ArraySet<E> : Collection<E> {
+abstract class ArraySet<E> : Set<E> {
     override val size: Int
         get() = TODO("Not yet implemented")
 
