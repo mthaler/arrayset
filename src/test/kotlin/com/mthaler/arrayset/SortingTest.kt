@@ -8,7 +8,7 @@ class SortingTest {
     @Test
     fun insertionSortComparator() {
         val a = arrayOf(3, 2, 5, 4, 8, 12, 1)
-        Sorting.InsertionSort.sort(a, 0, 6, object : Comparator<Int> {
+        Sorting.InsertionSort.sort(a, 0, a.size, object : Comparator<Int> {
             override fun compare(x: Int, y: Int): Int {
                 if (x > y) {
                     return 1
