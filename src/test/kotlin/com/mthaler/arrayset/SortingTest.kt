@@ -21,4 +21,11 @@ class SortingTest {
         })
         assertArrayEquals(arrayOf(1, 2, 3, 4, 5, 8, 12), a)
     }
+
+    @Test
+    fun insertionSortComparable() {
+        val a = arrayOf(3, 2, 5, 4, 8, 12, 1)
+        Sorting.InsertionSort.sort(a, 0, a.size)
+        assertArrayEquals(arrayOf(1, 2, 3, 4, 5, 8, 12), a)
+    }
 }
