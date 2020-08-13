@@ -33,4 +33,10 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
     override fun iterator(): Iterator<E> {
         return elements.iterator()
     }
+
+
+    fun union(that: ArraySet<E>): ArraySet<E> {
+        TODO("Not yet implemented")
+    }
+
 }
