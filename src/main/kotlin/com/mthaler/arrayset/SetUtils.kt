@@ -2,6 +2,9 @@ package com.mthaler.arrayset
 
 object SetUtils {
 
+    fun <E : Comparable<E>>union(a: Array<E>, b: Array<E>): Array<E> =
+        UnionMerge<E>(a, b).result()
+
     class UnionMerge<E : Comparable<E>>(val a: Array<E>, val b: Array<E>) : BinaryMerge() {
         val r = ArrayUtils.newArray(a.size + b.size, a)
         var ri: Int = 0
