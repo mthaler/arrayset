@@ -1,8 +1,13 @@
 package com.mthaler.arrayset
 
+import java.lang.Exception
 import kotlin.math.min
 
 object SetUtils {
+
+    class AbortControl : Exception()
+
+    val abort = AbortControl()
 
     fun <E : Comparable<E>>union(a: Array<E>, b: Array<E>): Array<E> =
         UnionMerge(a, b).result()
@@ -15,6 +20,15 @@ object SetUtils {
 
     fun <E : Comparable<E>>xor(a: Array<E>, b: Array<E>): Array<E> =
         XorMerge(a, b).result()
+
+    fun <E : Comparable<E>>subsetOf(a: Array<E>, b: Array<E>): Boolean {
+        try {
+            SubsetOf(a, b)
+            return true
+        } catch(x: AbortControl) {
+            return false
+        }
+    }
 
     class UnionMerge<E : Comparable<E>>(val a: Array<E>, val b: Array<E>) : BinaryMerge() {
         val r = ArrayUtils.newArray(a.size + b.size, a)
@@ -110,5 +124,22 @@ object SetUtils {
         }
 
         fun result(): Array<E> = ArrayUtils.resizeInPlace(r, ri)
+    }
+
+    class SubsetOf<E : Comparable<E>>(val a: Array<E>, val b: Array<E>) : BinaryMerge() {
+
+        init {
+            merge0(0, a.size, 0, b.size)
+        }
+
+        override fun compare(ai: Int, bi: Int) = a[ai].compareTo(b[bi])
+
+        override fun collision(ai: Int, bi: Int) {}
+
+        override fun fromA(a0: Int, a1: Int, bi: Int) {
+            throw abort
+        }
+
+        override fun fromB(ai: Int, b0: Int, b1: Int) {}
     }
 }
