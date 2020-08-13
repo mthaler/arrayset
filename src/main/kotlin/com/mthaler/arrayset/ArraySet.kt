@@ -1,6 +1,8 @@
 package com.mthaler.arrayset
 
-abstract class ArraySet<E : Comparable<E>>(val elements: Array<E>) : Set<E> {
+import kotlin.collections.AbstractSet
+
+abstract class ArraySet<E : Comparable<E>>(val elements: Array<E>) : AbstractSet<E>() {
     override val size: Int
         get() = elements.size
 
