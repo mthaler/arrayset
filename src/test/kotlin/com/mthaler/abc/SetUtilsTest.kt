@@ -1,4 +1,4 @@
-package com.mthaler.arrayset
+package com.mthaler.abc
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

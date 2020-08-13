@@ -1,4 +1,4 @@
-package com.mthaler.arrayset
+package com.mthaler.abc
 
 object Searching {
 
