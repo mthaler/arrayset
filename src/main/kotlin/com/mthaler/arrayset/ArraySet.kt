@@ -1,6 +1,6 @@
 package com.mthaler.arrayset
 
-abstract class ArraySet<E> : Set<E> {
+abstract class ArraySet<E : Comparable<E>>(val elements: Array<E>) : Set<E> {
     override val size: Int
         get() = TODO("Not yet implemented")
 
@@ -13,10 +13,10 @@ abstract class ArraySet<E> : Set<E> {
     }
 
     override fun isEmpty(): Boolean {
-        TODO("Not yet implemented")
+        return elements.isEmpty()
     }
 
     override fun iterator(): Iterator<E> {
-        TODO("Not yet implemented")
+        return elements.iterator()
     }
 }
