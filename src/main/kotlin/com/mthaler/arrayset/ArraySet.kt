@@ -34,9 +34,6 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
         return elements.iterator()
     }
 
-
-    fun union(that: ArraySet<E>): ArraySet<E> {
-        TODO("Not yet implemented")
-    }
-
+    fun union(that: ArraySet<E>): ArraySet<E> =
+        ArraySet<E>(SetUtils.union(this.elements, that.elements))
 }
