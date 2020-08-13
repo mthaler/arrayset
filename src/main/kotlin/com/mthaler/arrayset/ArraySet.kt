@@ -17,8 +17,13 @@ abstract class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
         return Searching.search(elements, 0, elements.size, element) >= 0
     }
 
+    // todo: optimize
     override fun containsAll(elements: Collection<E>): Boolean {
-        TODO("Not yet implemented")
+        for (element in elements) {
+            if (Searching.search(this.elements, 0, elements.size, element) < 0)
+                return false
+        }
+        return true
     }
 
     override fun isEmpty(): Boolean {
