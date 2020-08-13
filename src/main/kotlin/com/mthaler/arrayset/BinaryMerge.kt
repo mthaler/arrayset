@@ -44,4 +44,34 @@ abstract class BinaryMerge {
      * Called for a subsequence of elements of b that are not overlapping any element of a
      */
     abstract fun fromB(ai: Int, b0: Int, b1: Int)
+
+    fun merge0(a0: Int, a1: Int, b0: Int, b1: Int) {
+        if (a0 == a1) {
+            if (b0 != b1)
+                fromB(a0, b0, b1)
+        } else if (b0 == b1) {
+            fromA(a0, a1, b0)
+        } else {
+            val am = (a0 + a1) / 2
+            val res = binarySearchB(am, b0, b1)
+            if (res >= 0) {
+                // same elements
+                val bm = res
+                // merge everything below a(am) with everything below the found element
+                merge0(a0, am, b0, bm)
+                // add the elements a(am) and b(bm)
+                collision(am, bm)
+                // merge everything above a(am) with everything above the found element
+                merge0(am + 1, a1, bm + 1, b1)
+            } else {
+                val bm = -res - 1
+                // merge everything below a(am) with everything below the found insertion point
+                merge0(a0, am, b0, bm)
+                // add a(am)
+                fromA(am, am + 1, bm)
+                // everything above a(am) with everything above the found insertion point
+                merge0(am + 1, a1, bm, b1)
+            }
+        }
+    }
 }
