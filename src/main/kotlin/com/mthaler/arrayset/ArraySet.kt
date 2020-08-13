@@ -2,7 +2,7 @@ package com.mthaler.arrayset
 
 import kotlin.collections.AbstractSet
 
-abstract class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
+class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
     val elements: Array<E>
 
