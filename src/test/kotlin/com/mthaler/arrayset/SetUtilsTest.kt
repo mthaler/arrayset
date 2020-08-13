@@ -14,4 +14,10 @@ class SetUtilsTest {
         val a2 = SetUtils.union(arrayOf(1, 2, 3, 4), arrayOf(1, 2, 3, 4))
         assertArrayEquals(arrayOf(1, 2, 3 ,4), a2)
     }
+
+    @Test
+    fun intersection() {
+        val a0 = SetUtils.intersection(arrayOf(1, 2, 3, 4), arrayOf(3, 4, 5, 6))
+        assertArrayEquals(arrayOf(3, 4), a0)
+    }
 }
