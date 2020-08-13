@@ -35,4 +35,12 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
     fun union(that: ArraySet<E>): ArraySet<E> =
         ArraySet<E>(SetUtils.union(this.elements, that.elements))
+
+    companion object {
+        fun <T : Comparable<T>> of(vararg elements: T): Set<T> = if (elements.size > 0) {
+            ArraySet<T>(elements as Array<T>)
+        } else {
+            TODO()
+        }
+    }
 }
