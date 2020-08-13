@@ -30,6 +30,15 @@ object SetUtils {
         }
     }
 
+    fun <E : Comparable<E>>intersects(a: Array<E>, b: Array<E>): Boolean {
+        try {
+            NoIntersect(a, b)
+            return false
+        } catch(x: AbortControl) {
+            return true
+        }
+    }
+
     class UnionMerge<E : Comparable<E>>(val a: Array<E>, val b: Array<E>) : BinaryMerge() {
         val r = ArrayUtils.newArray(a.size + b.size, a)
         var ri: Int = 0
@@ -139,6 +148,21 @@ object SetUtils {
         override fun fromA(a0: Int, a1: Int, bi: Int) {
             throw abort
         }
+
+        override fun fromB(ai: Int, b0: Int, b1: Int) {}
+    }
+
+    final class NoIntersect<E : Comparable<E>>(val a: Array<E>, val b: Array<E>) : BinaryMerge() {
+
+        init {
+            merge0(0, a.size, 0, b.size)
+        }
+
+        override fun compare(ai: Int, bi: Int) = a[ai].compareTo(b[bi])
+
+        override fun collision(ai: Int, bi: Int) { throw abort }
+
+        override fun fromA(a0: Int, a1: Int, bi: Int) {}
 
         override fun fromB(ai: Int, b0: Int, b1: Int) {}
     }
