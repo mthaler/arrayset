@@ -2,7 +2,7 @@ package com.mthaler.arrayset
 
 abstract class ArraySet<E : Comparable<E>>(val elements: Array<E>) : Set<E> {
     override val size: Int
-        get() = TODO("Not yet implemented")
+        get() = elements.size
 
     override fun contains(element: E): Boolean {
         TODO("Not yet implemented")
