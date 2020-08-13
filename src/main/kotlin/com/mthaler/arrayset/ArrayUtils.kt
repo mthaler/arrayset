@@ -25,7 +25,7 @@ object ArrayUtils {
             var j = 1
             var i = 1
             while (i < a.size) {
-                if (a[j-1].compareTo(a[i]) == 0) {
+                if (a[j-1].compareTo(a[i]) != 0) {
                     a[j] = a[i]
                     j += 1
                 }
