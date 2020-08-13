@@ -4,7 +4,7 @@ import kotlin.collections.AbstractSet
 
 open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
-    val elements: Array<E>
+    protected val elements: Array<E>
 
     init {
         elements = ArrayUtils.sortAndRemoveDuplicatesInPlace(a)

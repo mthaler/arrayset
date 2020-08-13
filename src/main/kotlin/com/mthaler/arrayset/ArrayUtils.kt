@@ -34,4 +34,10 @@ object ArrayUtils {
             return resizeInPlace(a, j)
         }
     }
+
+    fun <T>singleton(value: T, prototype: Array<T>): Array<T> {
+        val result = java.lang.reflect.Array.newInstance(prototype.javaClass.componentType, 1) as Array<T>
+        result[0] = value
+        return result
+    }
 }
