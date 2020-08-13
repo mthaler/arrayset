@@ -12,5 +12,6 @@ class SetUtilsTest {
         val a1 = SetUtils.union(arrayOf(1, 2), arrayOf(5, 6))
         assertArrayEquals(arrayOf(1, 2, 5, 6), a1)
         val a2 = SetUtils.union(arrayOf(1, 2, 3, 4), arrayOf(1, 2, 3, 4))
+        assertArrayEquals(arrayOf(1, 2, 3 ,4), a2)
     }
 }
