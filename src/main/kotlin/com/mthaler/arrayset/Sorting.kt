@@ -60,4 +60,8 @@ object Sorting {
             return store
         }
     }
+
+    fun <T : Comparable<T>>sort(data: Array<T>) {
+        QuickSort.qsort(data)
+    }
 }
