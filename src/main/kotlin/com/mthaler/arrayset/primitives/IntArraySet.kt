@@ -12,8 +12,7 @@ open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
         get() = elements.size
 
     override fun contains(element: Int): Boolean {
-        //return Searching.search(elements, 0, elements.size, element) >= 0
-        TODO()
+        return IntSearching.search(elements, 0, elements.size, element) >= 0
     }
 
     override fun isEmpty(): Boolean {
@@ -24,12 +23,26 @@ open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
         return elements.iterator()
     }
 
-    fun union(that: IntArray): IntArraySet = TODO()
+    fun union(that: IntArraySet): IntArraySet =
+        IntArraySet(IntSetUtils.union(this.elements, that.elements))
 
-    fun intersection(that: IntArraySet): IntArraySet = TODO()
+    fun intersect(that: IntArraySet): IntArraySet =
+        IntArraySet(IntSetUtils.intersection(this.elements, that.elements))
 
+    fun subsetOf(that: IntArraySet): Boolean =
+        IntSetUtils.subsetOf(this.elements, that.elements)
+
+    fun intersects(that: IntArraySet): Boolean =
+        IntSetUtils.intersects(this.elements, that.elements)
+
+    fun diff(that: IntArraySet): IntArraySet =
+        IntArraySet(IntSetUtils.diff(this.elements, that.elements))
+
+    fun xor(that: IntArraySet): IntArraySet =
+        IntArraySet(IntSetUtils.xor(this.elements, that.elements))
+    
     companion object {
-        fun <T : Comparable<T>> of(vararg elements: Int): IntArraySet = if (elements.size > 0) {
+        fun of(vararg elements: Int): IntArraySet = if (elements.size > 0) {
              IntArraySet(elements)
         } else {
             TODO()
