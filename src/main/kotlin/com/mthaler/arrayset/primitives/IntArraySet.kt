@@ -1,6 +1,6 @@
 package com.mthaler.arrayset.primitives
 
-open class IntArraySet(a: IntArray) {
+open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
 
     protected val elements: IntArray
 
@@ -8,19 +8,19 @@ open class IntArraySet(a: IntArray) {
         elements = IntArrayUtils.sortAndRemoveDuplicatesInPlace(a)
     }
 
-    val size: Int
+    override val size: Int
         get() = elements.size
 
-    fun contains(element: Int): Boolean {
+    override fun contains(element: Int): Boolean {
         //return Searching.search(elements, 0, elements.size, element) >= 0
         TODO()
     }
 
-    fun isEmpty(): Boolean {
+    override fun isEmpty(): Boolean {
         return elements.isEmpty()
     }
 
-    fun iterator(): Iterator<Int> {
+    override fun iterator(): Iterator<Int> {
         return elements.iterator()
     }
 
