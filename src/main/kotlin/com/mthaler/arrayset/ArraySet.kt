@@ -34,13 +34,26 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
     }
 
     fun union(that: ArraySet<E>): ArraySet<E> =
-        ArraySet<E>(SetUtils.union(this.elements, that.elements))
+        ArraySet(SetUtils.union(this.elements, that.elements))
 
-    fun intersection(that: ArraySet<E>): ArraySet<E> = TODO()
+    fun intersect(that: ArraySet<E>): ArraySet<E> =
+        ArraySet(SetUtils.intersection(this.elements, that.elements))
+
+    fun subsetOf(that: ArraySet<E>): Boolean =
+        SetUtils.subsetOf(this.elements, that.elements)
+
+    fun intersects(that: ArraySet<E>): Boolean =
+        SetUtils.intersects(this.elements, that.elements)
+
+    fun diff(that: ArraySet<E>): ArraySet<E> =
+        ArraySet(SetUtils.diff(this.elements, that.elements))
+
+    fun xor(that: ArraySet<E>): ArraySet<E> =
+        ArraySet(SetUtils.xor(this.elements, that.elements))
 
     companion object {
         fun <T : Comparable<T>> of(vararg elements: T): Set<T> = if (elements.size > 0) {
-            ArraySet<T>(elements as Array<T>)
+            ArraySet(elements as Array<T>)
         } else {
             TODO()
         }
