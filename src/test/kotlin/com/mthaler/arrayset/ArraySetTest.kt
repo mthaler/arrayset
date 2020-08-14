@@ -25,4 +25,10 @@ class ArraySetTest {
         val s0 = ArraySet.of(1, 2, 3, 4).union(ArraySet.of(3, 4, 5, 6))
         assertEquals(ArraySet.of(1, 2, 3, 4, 5, 6), s0)
     }
+
+    @Test
+    fun intersect() {
+        val s0 = ArraySet.of(1, 2, 3, 4).intersect(ArraySet.of(3, 4, 5, 6))
+        assertEquals(ArraySet.of(3, 4), s0)
+    }
 }
