@@ -3,6 +3,7 @@ package com.mthaler.arrayset
 import kotlin.math.min
 
 object ArrayUtils {
+
     fun <T>newArray(n: Int, prototype: Array<T>): Array<T> {
         return java.lang.reflect.Array.newInstance(prototype.javaClass.componentType, n) as Array<T>
     }
