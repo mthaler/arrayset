@@ -1,4 +1,4 @@
-package com.mthaler.abc
+package com.mthaler.arrayset
 
 abstract class BinaryMerge {
 
