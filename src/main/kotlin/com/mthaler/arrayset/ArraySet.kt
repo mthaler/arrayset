@@ -51,11 +51,22 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
     fun xor(that: ArraySet<E>): ArraySet<E> =
         ArraySet(SetUtils.xor(this.elements, that.elements))
 
+    operator fun plus(elem: E): ArraySet<E> {
+        return union(singleton0(elem, elements))
+    }
+
+    operator fun minus(elem: E): ArraySet<E> {
+        return diff(singleton0(elem, elements))
+    }
+
     companion object {
         fun <T : Comparable<T>> of(vararg elements: T): Set<T> = if (elements.size > 0) {
             ArraySet(elements as Array<T>)
         } else {
             TODO()
         }
+
+        fun <T : Comparable<T>>singleton0(e: T, a: Array<T>): ArraySet<T> =
+            ArraySet(ArrayUtils.singleton(e, a))
     }
 }
