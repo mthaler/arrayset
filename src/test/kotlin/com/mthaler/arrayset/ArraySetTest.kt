@@ -40,4 +40,13 @@ class ArraySetTest {
         val s2 = s0 + 7
         assertEquals(ArraySet.of(1, 3, 4, 7, 10), s2)
     }
+
+    @Test
+    fun minus() {
+        val s0 = ArraySet.of(1, 4, 3, 7, 10, 7)
+        val s1 = s0 - 7
+        assertEquals(ArraySet.of(1, 3, 4, 10), s1)
+        val s2 = s0 - 8
+        assertEquals(ArraySet.of(1, 3, 4, 7, 10), s2)
+    }
 }
