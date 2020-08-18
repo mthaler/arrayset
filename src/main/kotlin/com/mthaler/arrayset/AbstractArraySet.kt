@@ -2,7 +2,7 @@ package com.mthaler.arrayset
 
 abstract class AbstractArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
-    protected val elements: Array<E>
+    protected var elements: Array<E>
 
     init {
         elements = ArrayUtils.sortAndRemoveDuplicatesInPlace(a)

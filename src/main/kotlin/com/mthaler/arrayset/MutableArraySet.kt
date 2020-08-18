@@ -5,7 +5,9 @@ import kotlin.collections.MutableSet
 class MutableArraySet<E : Comparable<E>>(a: Array<E>) : AbstractArraySet<E>(a), MutableSet<E> {
 
     override fun add(element: E): Boolean {
-        TODO("Not yet implemented")
+        val oldSize = this.elements.size
+        this.elements = SetUtils.union(this.elements, ArrayUtils.singleton(element, elements))
+        return oldSize != this.elements.size
     }
 
     override fun addAll(elements: Collection<E>): Boolean {
@@ -13,7 +15,7 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : AbstractArraySet<E>(a), 
     }
 
     override fun clear() {
-        TODO("Not yet implemented")
+        this.elements = ArrayUtils.newArray(0, this.elements)
     }
 
     override fun iterator(): MutableIterator<E> {
@@ -30,5 +32,13 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : AbstractArraySet<E>(a), 
 
     override fun retainAll(elements: Collection<E>): Boolean {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        fun <T : Comparable<T>> of(vararg elements: T): MutableArraySet<T> = if (elements.size > 0) {
+            MutableArraySet(elements as Array<T>)
+        } else {
+            TODO()
+        }
     }
 }
