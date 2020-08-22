@@ -5,6 +5,13 @@ import io.kotest.property.forAll
 
 class IntArrayCheck : StringSpec({
 
+    "contains" {
+        forAll<Set<Int>, Int> { a, b ->
+            val s = IntArraySet.of(a)
+            s.contains(b) == a.contains(b)
+        }
+    }
+
     "union" {
         forAll<Set<Int>, Set<Int>> { a, b ->
             val s1 = IntArraySet.of(a)
