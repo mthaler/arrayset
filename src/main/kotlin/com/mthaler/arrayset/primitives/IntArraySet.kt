@@ -50,7 +50,7 @@ open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
             IntArraySet(intArrayOf())
         }
 
-        inline fun <reified T : Comparable<T>> of(collection: Collection<Int>): IntArraySet =
+        fun of(collection: Collection<Int>): IntArraySet =
             IntArraySet(collection.toIntArray())
     }
 }
