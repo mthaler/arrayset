@@ -58,11 +58,14 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
     }
 
     companion object {
-        fun <T : Comparable<T>> of(vararg elements: T): Set<T> = if (elements.size > 0) {
+        inline fun <reified T : Comparable<T>> of(vararg elements: T): ArraySet<T> = if (elements.size > 0) {
             ArraySet(elements as Array<T>)
         } else {
-            TODO()
+            ArraySet(emptyArray<T>())
         }
+
+        inline fun <reified T : Comparable<T>> of(collection: Collection<T>): ArraySet<T> =
+            ArraySet(collection.toTypedArray())
 
         fun <T : Comparable<T>>singleton0(e: T, a: Array<T>): ArraySet<T> =
             ArraySet(ArrayUtils.singleton(e, a))
