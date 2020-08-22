@@ -23,7 +23,9 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : ArraySet<E>(a), MutableS
     }
 
     override fun remove(element: E): Boolean {
-        TODO("Not yet implemented")
+        val oldSize = this.elements.size
+        this.elements = SetUtils.diff(this.elements, ArrayUtils.singleton(element, elements))
+        return oldSize != this.elements.size
     }
 
     override fun removeAll(elements: Collection<E>): Boolean {

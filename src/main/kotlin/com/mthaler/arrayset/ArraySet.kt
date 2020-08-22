@@ -1,5 +1,8 @@
 package com.mthaler.arrayset
 
+import java.util.*
+import kotlin.collections.AbstractSet
+
 open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
     var elements: Array<E>
@@ -55,6 +58,10 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
     operator fun minus(elem: E): ArraySet<E> {
         return diff(singleton0(elem, elements))
+    }
+
+    override fun toString(): String {
+        return Arrays.toString(elements)
     }
 
     companion object {
