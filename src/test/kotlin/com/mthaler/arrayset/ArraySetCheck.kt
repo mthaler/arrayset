@@ -5,6 +5,13 @@ import io.kotest.property.forAll
 
 class ArraySetCheck : StringSpec({
 
+    "size"  {
+        forAll<List<Int>> { a ->
+            val s = ArraySet.of(a)
+            s.size == a.toSet().size
+        }
+    }
+
     "contains" {
         forAll<Set<Int>, Int> { a, b ->
             val s = ArraySet.of(a)
