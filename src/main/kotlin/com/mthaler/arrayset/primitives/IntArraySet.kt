@@ -1,5 +1,7 @@
 package com.mthaler.arrayset.primitives
 
+import com.mthaler.arrayset.ArraySet
+
 open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
 
     protected val elements: IntArray
@@ -43,9 +45,12 @@ open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
     
     companion object {
         fun of(vararg elements: Int): IntArraySet = if (elements.size > 0) {
-             IntArraySet(elements)
+            IntArraySet(elements)
         } else {
-            TODO()
+            IntArraySet(intArrayOf())
         }
+
+        inline fun <reified T : Comparable<T>> of(collection: Collection<Int>): IntArraySet =
+            IntArraySet(collection.toIntArray())
     }
 }
