@@ -2,7 +2,7 @@ package com.mthaler.arrayset
 
 import kotlin.collections.MutableSet
 
-class MutableArraySet<E : Comparable<E>>(a: Array<E>) : AbstractArraySet<E>(a), MutableSet<E> {
+class MutableArraySet<E : Comparable<E>>(a: Array<E>) : ArraySet<E>(a), MutableSet<E> {
 
     override fun add(element: E): Boolean {
         val oldSize = this.elements.size

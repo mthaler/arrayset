@@ -1,23 +1,52 @@
 package com.mthaler.arrayset
 
-open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractArraySet<E>(a) {
+open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
 
-    fun union(that: AbstractArraySet<E>): ArraySet<E> =
+    var elements: Array<E>
+
+    init {
+        elements = ArrayUtils.sortAndRemoveDuplicatesInPlace(a)
+    }
+
+    override val size: Int
+        get() = elements.size
+
+    override fun contains(element: E): Boolean {
+        return Searching.search(elements, 0, elements.size, element) >= 0
+    }
+
+    override fun containsAll(other: Collection<E>): Boolean {
+        for (element in elements) {
+            if (Searching.search(this.elements, 0, elements.size, element) < 0)
+                return false
+        }
+        return true
+    }
+
+    override fun isEmpty(): Boolean {
+        return elements.isEmpty()
+    }
+
+    override fun iterator(): Iterator<E> {
+        return elements.iterator()
+    }
+
+    fun union(that: ArraySet<E>): ArraySet<E> =
         ArraySet(SetUtils.union(this.elements, that.elements))
 
-    fun intersect(that: AbstractArraySet<E>): ArraySet<E> =
+    fun intersect(that: ArraySet<E>): ArraySet<E> =
         ArraySet(SetUtils.intersection(this.elements, that.elements))
 
-    fun subsetOf(that: AbstractArraySet<E>): Boolean =
+    fun subsetOf(that: ArraySet<E>): Boolean =
         SetUtils.subsetOf(this.elements, that.elements)
 
-    fun intersects(that: AbstractArraySet<E>): Boolean =
+    fun intersects(that: ArraySet<E>): Boolean =
         SetUtils.intersects(this.elements, that.elements)
 
-    fun diff(that: AbstractArraySet<E>): ArraySet<E> =
+    fun diff(that: ArraySet<E>): ArraySet<E> =
         ArraySet(SetUtils.diff(this.elements, that.elements))
 
-    fun xor(that: AbstractArraySet<E>): ArraySet<E> =
+    fun xor(that: ArraySet<E>): ArraySet<E> =
         ArraySet(SetUtils.xor(this.elements, that.elements))
 
     operator fun plus(elem: E): ArraySet<E> {
