@@ -47,4 +47,18 @@ class ArraySetCheck: StringSpec({
             s1.xor(s2) == (a.subtract(b)).union(b.subtract(a))
         }
     }
+
+    "plus" {
+        forAll<Set<Int>, Int> { a, b ->
+            val s = ArraySet.of(a)
+            s + b == a + b
+        }
+    }
+
+    "minus" {
+        forAll<Set<Int>, Int> { a, b ->
+            val s = ArraySet.of(a)
+            s - b == a - b
+        }
+    }
 })
