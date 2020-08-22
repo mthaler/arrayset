@@ -48,6 +48,14 @@ class ArraySetCheck: StringSpec({
         }
     }
 
+    "subsetOf" {
+        forAll<Set<Int>, Set<Int>> { a, b ->
+            val s1 = ArraySet.of(a)
+            val s2 = ArraySet.of(b)
+            (s1.subsetOf(s2)) == (a.intersect(b) == a)
+        }
+    }
+
     "plus" {
         forAll<Set<Int>, Int> { a, b ->
             val s = ArraySet.of(a)
