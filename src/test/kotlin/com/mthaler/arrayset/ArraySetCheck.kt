@@ -31,4 +31,20 @@ class ArraySetCheck: StringSpec({
             s == a.subtract(b)
         }
     }
+
+    "intersets" {
+        forAll<Set<Int>, Set<Int>> { a, b ->
+            val s1 = ArraySet.of(a)
+            val s2 = ArraySet.of(b)
+            !s1.intersects(s2) == a.intersect(b).isEmpty()
+        }
+    }
+
+    "xor" {
+        forAll<Set<Int>, Set<Int>> { a, b ->
+            val s1 = ArraySet.of(a)
+            val s2 = ArraySet.of(b)
+            s1.xor(s2) == (a.subtract(b)).union(b.subtract(a))
+        }
+    }
 })
