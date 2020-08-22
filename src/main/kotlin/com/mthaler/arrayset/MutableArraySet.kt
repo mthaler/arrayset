@@ -35,10 +35,13 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : ArraySet<E>(a), MutableS
     }
 
     companion object {
-        fun <T : Comparable<T>> of(vararg elements: T): MutableArraySet<T> = if (elements.size > 0) {
+        inline fun <reified T : Comparable<T>> of(vararg elements: T): MutableArraySet<T> = if (elements.size > 0) {
             MutableArraySet(elements as Array<T>)
         } else {
-            TODO()
+            MutableArraySet(emptyArray<T>())
         }
+
+        inline fun <reified T : Comparable<T>> of(collection: Collection<T>): MutableArraySet<T> =
+            MutableArraySet(collection.toTypedArray())
     }
 }
