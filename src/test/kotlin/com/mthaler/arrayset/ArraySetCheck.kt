@@ -22,4 +22,13 @@ class ArraySetCheck: StringSpec({
             s == a.intersect(b)
         }
     }
+
+    "diff"  {
+        forAll<Set<Int>, Set<Int>> { a, b ->
+            val s1 = ArraySet.of(a)
+            val s2 = ArraySet.of(b)
+            val s = s1.diff(s2)
+            s == a.subtract(b)
+        }
+    }
 })
