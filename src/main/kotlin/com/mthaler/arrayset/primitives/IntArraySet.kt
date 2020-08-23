@@ -1,10 +1,8 @@
 package com.mthaler.arrayset.primitives
 
-import com.mthaler.arrayset.ArraySet
-
 open class IntArraySet(a: IntArray) : AbstractSet<Int>() {
 
-    protected val elements: IntArray
+    protected var elements: IntArray
 
     init {
         elements = IntArrayUtils.sortAndRemoveDuplicatesInPlace(a)

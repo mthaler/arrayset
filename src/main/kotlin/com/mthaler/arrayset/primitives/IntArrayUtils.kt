@@ -30,4 +30,8 @@ object IntArrayUtils {
             return resizeInPlace(a, j)
         }
     }
+
+    fun singleton(value: Int): IntArray {
+        return intArrayOf(value)
+    }
 }
