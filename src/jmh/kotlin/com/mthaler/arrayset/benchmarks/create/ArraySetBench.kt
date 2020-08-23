@@ -1,8 +1,9 @@
-package com.mthaler.arrayset.benchmarks
+package com.mthaler.arrayset.benchmarks.create
 
 import com.mthaler.arrayset.ArraySet
 
-data class ArraySetBench(val a: Array<Int>) : SetCreateBenchOps {
+data class ArraySetBench(val a: Array<Int>) :
+    SetCreateBenchOps {
 
     override fun createBulk(): Any = {
         ArraySet(a)

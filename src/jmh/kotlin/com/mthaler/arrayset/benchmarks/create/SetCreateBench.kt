@@ -1,4 +1,4 @@
-package com.mthaler.arrayset.benchmarks
+package com.mthaler.arrayset.benchmarks.create
 
 import org.openjdk.jmh.annotations.*
 import java.util.concurrent.TimeUnit
@@ -18,6 +18,9 @@ class SetCreateBench {
 
     @Setup
     fun setup(): Unit {
-        bench = SetCreateBenchOps.create((0..size).toList(), kind)
+        bench = SetCreateBenchOps.create(
+            (0..size).toList(),
+            kind
+        )
     }
 }
