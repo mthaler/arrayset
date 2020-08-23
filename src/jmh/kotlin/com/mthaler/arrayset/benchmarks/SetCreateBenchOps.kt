@@ -8,7 +8,7 @@ interface SetCreateBenchOps {
 
     companion object {
 
-        fun create(a: List<Int>, kind: String): Any {
+        fun create(a: List<Int>, kind: String): SetCreateBenchOps {
             val a1 = a.map { i -> BenchUtil.mix(i) }.toTypedArray()
             require(a1.size == a.size)
             when(kind) {
