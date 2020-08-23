@@ -65,6 +65,8 @@ open class ArraySet<E : Comparable<E>>(a: Array<E>) : AbstractSet<E>() {
     }
 
     companion object {
+        inline fun <reified T : Comparable<T>> empty() = ArraySet(emptyArray<T>())
+
         inline fun <reified T : Comparable<T>> of(vararg elements: T): ArraySet<T> = if (elements.size > 0) {
             ArraySet(elements as Array<T>)
         } else {
