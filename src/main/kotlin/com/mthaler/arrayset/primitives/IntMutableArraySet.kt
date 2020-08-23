@@ -56,4 +56,10 @@ class IntMutableArraySet(a: IntArray) :  IntArraySet(a), MutableSet<Int> {
             return oldSize != this.elements.size
         }
     }
+
+    companion object {
+        fun of(vararg elements: Int): IntMutableArraySet = IntMutableArraySet(elements)
+
+        fun of(collection: Collection<Int>): IntMutableArraySet = IntMutableArraySet(collection.toIntArray())
+    }
 }
