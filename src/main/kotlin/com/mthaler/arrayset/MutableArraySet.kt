@@ -12,7 +12,7 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : ArraySet<E>(a), MutableS
 
     override fun addAll(elements: Collection<E>): Boolean {
         if (elements.isEmpty()) {
-            return true
+            return false
         } else {
             val oldSize = this.elements.size
             val a = ArrayUtils.sortAndRemoveDuplicatesInPlace(ArrayUtils.toArray(elements))
