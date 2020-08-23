@@ -36,7 +36,14 @@ class MutableArraySet<E : Comparable<E>>(a: Array<E>) : ArraySet<E>(a), MutableS
     }
 
     override fun removeAll(elements: Collection<E>): Boolean {
-        TODO("Not yet implemented")
+        if (elements.isEmpty()) {
+            return false
+        } else {
+            val oldSize = this.elements.size
+            val a = ArrayUtils.sortAndRemoveDuplicatesInPlace(ArrayUtils.toArray(elements))
+            this.elements = SetUtils.diff(this.elements, a)
+            return oldSize != this.elements.size
+        }
     }
 
     override fun retainAll(elements: Collection<E>): Boolean {

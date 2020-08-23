@@ -28,4 +28,12 @@ class MutableArraySetCheck  : StringSpec({
             s1.remove(b) == s2.remove(b) && s1 as Set<Int> == s2
         }
     }
+
+    "removeAll" {
+        forAll<Set<Int>, List<Int>> { a, b ->
+            val s1 = MutableArraySet.of(a)
+            val s2 = HashSet<Int>(a)
+            s1.removeAll(b) == s2.removeAll(b) && s1 as Set<Int> == s2
+        }
+    }
 })
