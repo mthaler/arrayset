@@ -18,9 +18,6 @@ class SetCreateBench {
 
     @Setup
     fun setup(): Unit {
-        bench = SetCreateBenchOps.create(
-            (0..size).toList(),
-            kind
-        )
+        bench = SetCreateBenchOps.create((0..size).toList(), kind)
     }
 }
