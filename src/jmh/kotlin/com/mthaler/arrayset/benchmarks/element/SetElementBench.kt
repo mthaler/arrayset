@@ -1,6 +1,7 @@
 package com.mthaler.arrayset.benchmarks.element
 
 import org.openjdk.jmh.annotations.*
+import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
 
 @BenchmarkMode(Mode.AverageTime)
@@ -15,7 +16,7 @@ class SetElementBench {
     var kind = ""
 
     var k: Int = 0
-    var bench: SetElementBenchOps? = null
+    lateinit var bench: SetElementBenchOps
 
     @Setup
     fun setup(): Unit {
@@ -23,4 +24,10 @@ class SetElementBench {
         val n = (1.3 * size).toInt() // a value that is not contained in the set
         bench = SetElementBenchOps.create((0..size).toList(), c, n, kind)
     }
+
+    @Benchmark
+    fun containsFalse(x: Blackhole): Unit = x.consume(bench.containsFalse())
+
+    @Benchmark
+    fun containsTrue(x: Blackhole): Unit = x.consume(bench.containsTrue())
 }
