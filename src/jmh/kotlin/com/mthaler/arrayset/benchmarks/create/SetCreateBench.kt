@@ -1,6 +1,7 @@
 package com.mthaler.arrayset.benchmarks.create
 
 import org.openjdk.jmh.annotations.*
+import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
 
 @BenchmarkMode(Mode.AverageTime)
@@ -14,10 +15,16 @@ class SetCreateBench {
     @Param("arrayset", "hashset", "sortedset")
     var kind = ""
 
-    var bench: SetCreateBenchOps? = null
+    lateinit var bench: SetCreateBenchOps
 
     @Setup
     fun setup(): Unit {
         bench = SetCreateBenchOps.create((0..size).toList(), kind)
     }
+
+    @Benchmark
+    fun createBulk(x: Blackhole): Unit = x.consume(bench.createBulk())
+
+    @Benchmark
+    fun createElements(x: Blackhole): Unit = x.consume(bench.createElements())
 }
