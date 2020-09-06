@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Thread)
-class SetCreateBench {
+open class SetCreateBench {
 
     @Param("1", "10", "100", "1000", "10000", "100000")
     var size = 0

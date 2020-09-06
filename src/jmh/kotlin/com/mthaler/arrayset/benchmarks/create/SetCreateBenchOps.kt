@@ -15,8 +15,8 @@ interface SetCreateBenchOps {
             val a1 = a.map { i -> BenchUtil.mix(i) }.toTypedArray()
             require(a1.size == a.size)
             return when(kind) {
-                "hashset" -> KotlinCollectionBench(a1, { a -> hashSetOf(*a) })
-                "sortedset" -> KotlinCollectionBench(a1, { a -> sortedSetOf(*a) })
+                "hashset" -> KotlinCollectionBench(a1, { s -> hashSetOf(*s) })
+                "sortedset" -> KotlinCollectionBench(a1, { s -> sortedSetOf(*s) })
                 "arrayset" -> ArraySetBench(a1)
                 else -> throw IllegalArgumentException("Unknown benachmark: " + kind)
             }
