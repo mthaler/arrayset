@@ -26,8 +26,10 @@ open class SetElementBench {
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun containsFalse(x: Blackhole): Unit = x.consume(bench.containsFalse())
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun containsTrue(x: Blackhole): Unit = x.consume(bench.containsTrue())
 }

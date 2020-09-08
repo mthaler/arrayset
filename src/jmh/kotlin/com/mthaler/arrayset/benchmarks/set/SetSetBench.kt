@@ -30,26 +30,31 @@ open class SetSetBench {
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun union(x: Blackhole) {
         x.consume(bench!!.union())
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun intersect(x: Blackhole) {
         x.consume(bench.intersect())
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun diff(x: Blackhole) {
         x.consume(bench.diff())
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun subsetOf(x: Blackhole) {
         x.consume(bench.subsetOf())
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun filter(x: Blackhole) {
         x.consume(bench.filter { it < k + shift })
     }

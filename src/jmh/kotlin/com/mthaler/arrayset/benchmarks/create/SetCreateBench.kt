@@ -23,8 +23,10 @@ open class SetCreateBench {
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun createBulk(x: Blackhole): Unit = x.consume(bench.createBulk())
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     fun createElements(x: Blackhole): Unit = x.consume(bench.createElements())
 }
