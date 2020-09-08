@@ -33,3 +33,7 @@ dependencies {
     testImplementation 'io.kotest:kotest-property-jvm:4.2.0' // for kotest property test
     compileClasspath "me.champeau.gradle:jmh-gradle-plugin:0.5.0"
 }
+
+jmh {
+    duplicateClassesStrategy = 'warn'
+}
