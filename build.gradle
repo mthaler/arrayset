@@ -36,4 +36,8 @@ dependencies {
 
 jmh {
     duplicateClassesStrategy = 'warn'
+    iterations = 3
+    operationsPerInvocation = 3
+    warmupBatchSize = 3
+    fork = 2
 }
