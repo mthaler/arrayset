@@ -50,3 +50,45 @@ plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")
      file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
      
 unset multiplot
+
+set terminal pngcairo size 800, 3000
+set output "setset.png"
+set multiplot layout 5,1
+
+set title "union"
+bench = "c.m.a.b.set.SetSetBench.union"
+
+plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")? $7:1/0) with linespoints title "arrayset" ls 1, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "hashset")? $7:1/0) with linespoints title "hashset" ls 2, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
+     
+set title "intersect"
+bench = "c.m.a.b.set.SetSetBench.intersect"
+
+plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")? $7:1/0) with linespoints title "arrayset" ls 1, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "hashset")? $7:1/0) with linespoints title "hashset" ls 2, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
+   
+set title "diff"
+bench = "c.m.a.b.set.SetSetBench.diff"
+
+plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")? $7:1/0) with linespoints title "arrayset" ls 1, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "hashset")? $7:1/0) with linespoints title "hashset" ls 2, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
+   
+set title "filter"
+bench = "c.m.a.b.set.SetSetBench.filter"
+   
+plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")? $7:1/0) with linespoints title "arrayset" ls 1, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "hashset")? $7:1/0) with linespoints title "hashset" ls 2, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
+  
+set title "subsetOf"
+bench = "c.m.a.b.set.SetSetBench.subsetOf"
+   
+plot file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "arrayset")? $7:1/0) with linespoints title "arrayset" ls 1, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "hashset")? $7:1/0) with linespoints title "hashset" ls 2, \
+     file using 4:((stringcolumn(1) eq bench) && (stringcolumn(2) eq "sortedset")? $7:1/0) with linespoints title "sortedset" ls 3
+  
+unset multiplot
+
